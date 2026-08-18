@@ -20,6 +20,9 @@ But the IP address 62.173.142.148 is highly suspicious, searching it on VirusTot
 Reviewing the network traffic further, we see that 10.2.14.101 had requested the login page /login.php from 62.173.142.148, looking at the packet of the page that 10.2.14.101 received from 62.173.142.148 (HTTP/1.1 200 OK)  may reveal the malicious file that they had gotten.
 <br><br>
 <img width="1917" height="272" alt="image" src="https://github.com/user-attachments/assets/986a9bb1-d2b8-46b3-9c2c-6061f4e293cd" />
+<br><br>
 Reviewing the packet data shows that attached to the page was a JavaScript file named allegato_708.js, revealing the name of the malicious file that infected 10.2.14.101.   
+<br><br>
 <img width="960" height="442" alt="image" src="https://github.com/user-attachments/assets/45aa22f9-10ab-40ab-b258-4fc6326fb4d6" />
 <h4>Answer: allegato_708.js</h4>
+<h3>Q3.What is the SHA-256 hash of the malicious file used for initial access?</h3>

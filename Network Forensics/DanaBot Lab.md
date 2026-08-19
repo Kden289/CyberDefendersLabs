@@ -1,5 +1,5 @@
-<h1>Tools</h1>
-Wireshark
+<h1>Tools Used</h1>
+[Visit my website](https://www.example.com)
 <br>
 VirusTotal
 <h1>Scenario</h1>
@@ -42,3 +42,13 @@ On Behaviours, scrolling down to the Process and service actions header reveals 
 <img width="1687" height="565" alt="image" src="https://github.com/user-attachments/assets/2ddfd2de-6d8a-4701-b248-90140a7d179a" />
 <h4>Answer: wscript.exe</h4>
 <h3>Q5.What is the file extension of the second malicious file utilized by the attacker?</h3>
+further reviewing the network traffic reveals another DNS request made by 10.2.14.101 to the website sounddata.top, immediately after they establish communications, 10.2.13.101 requests the file resources.dll.
+<br><br>
+<img width="1178" height="211" alt="image" src="https://github.com/user-attachments/assets/06d9ce5f-ebf3-4f27-8bed-6a97f5cfac65" />
+<h4>Answer: .dll</h4>
+<h3>Q6.What is the MD5 hash of the second malicious file?</h3>
+Repeat the command used to identify file hashes by inputting certutil -hashfile resources.dll md5
+<br><br>
+<img width="575" height="80" alt="image" src="https://github.com/user-attachments/assets/22858595-ed4d-4066-b71e-c36005f24ad6" />
+<h4>Answer: e758e07113016aca55d9eda2b0ffeebe</h4>
+ 

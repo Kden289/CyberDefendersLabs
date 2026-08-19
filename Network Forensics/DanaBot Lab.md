@@ -1,5 +1,5 @@
 <h1>Tools Used</h1>
-[Visit my website](https://www.example.com)
+Wireshark
 <br>
 VirusTotal
 <h1>Scenario</h1>
@@ -29,7 +29,7 @@ Reviewing the packet data shows that attached to the page was a JavaScript file 
 <h5>Warning! this step requires you to download a real malicious file to be able to complete this, its recommended that an isolated virtual machine is used for this step.</h5>
 To further investigate the malicious nature of the file, the SHA-256 hash should be checked, to obtain the file in the first place, navigate to Wiresharks File→Export Objects→HTTP and export the login.php file.
 <br><br>
-Once the file has been obtained, the SHA-256 hash can be found by using the command line to reveal it. On Windows, inputting the command certutil hashfile login.php sha256, the file hash is revealed to be 847b4ad90b1daba2d9117a8e05776f3f902dda593fb1252289538acf476c4268
+Once the file has been obtained, the SHA-256 hash can be found by using the command line to reveal it. On Windows, inputting the command certutil -hashfile login.php sha256, the file hash is revealed to be 847b4ad90b1daba2d9117a8e05776f3f902dda593fb1252289538acf476c4268
 <br><br>
 <img width="652" height="81" alt="image" src="https://github.com/user-attachments/assets/8e4740fc-d89d-4c18-86af-b33ab53e37bc" />
 <h4>Answer: 847b4ad90b1daba2d9117a8e05776f3f902dda593fb1252289538acf476c4268 </h4>

@@ -46,8 +46,13 @@ From line 20533 to line 20553, the attacker guesses the password and username of
 <br><br>
 <img width="1180" height="780" alt="image" src="https://github.com/user-attachments/assets/46d4f8de-4828-4c6a-9963-50c7153577d7" />
 <h4>Answer: admin:tomcat</h4>
-<h3>Once inside the admin panel, the attacker attempted to upload a file with the intent of establishing a reverse shell. Can you identify the name of this malicious file from the captured data?</h3>
+<h3>Q7.Once inside the admin panel, the attacker attempted to upload a file with the intent of establishing a reverse shell. Can you identify the name of this malicious file from the captured data?</h3>
 The filter http.filedata will filter packets related to files, the filtered network traffic shows 14.0.0.120 sending a packet to 10.0.0.112, opening the packet data shows a section named MIME Multipart Media Encapsulation, and inside it is a part of data called deployWar that contains the malicious file, being named JXQOZY.war.
 <br><br>
 <img width="1177" height="643" alt="image" src="https://github.com/user-attachments/assets/ce719c19-487a-432e-91e0-f2693f3a05dc" />
 <h4>Answer: JXQOZY.war</h4>
+<h3>Q8.After the attacker established a reverse shell on our server, the payload connects back to the attacker's machine. From the analysis, what is the callback destination in IP:port format?</h3>
+Because the process is a reverse shell, the packet to look out for is when 10.0.0.112 established a connection with 14.0.0.120 instead of vice versa, combined with different ports. The filter that will be used to identify this will be tcpflags.syn==1 and ip.src==10.0.0.112, this reveals a communication created by 10.0.0.112 from port 55162 to 14.0.0.120 on port 443, showing the attackers true callback destination to be 14.0.0.120:443
+<br><br>
+<img width="1180" height="342" alt="image" src="https://github.com/user-attachments/assets/bdd66e33-0e78-494e-b1f9-45db19357710" />
+<h4>Answer: 14.0.0.120:443</h4>

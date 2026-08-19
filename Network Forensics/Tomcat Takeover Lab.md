@@ -40,4 +40,14 @@ Sifting through the filtered network, there is a noticeable group of packets in 
 <br><br>
 <img width="1171" height="410" alt="image" src="https://github.com/user-attachments/assets/a1e24618-28d0-4d38-8120-e36082a73308" />
 <h4>Answer: /manager</h4>
-
+<h3>Q6.After accessing the admin panel, the attacker brute-forced the login. What credentials did the attacker successfully use? (Provide them in username:password format)</h3>
+The filter http.authbasic will filter packets using basic unencrypted authentication, this narrows down the network traffic to only show the brute-force that the attack did.
+From line 20533 to line 20553, the attacker guesses the password and username of the admin panel until they eventually got it correct, revealing it to be admin:tomcat
+<br><br>
+<img width="1180" height="780" alt="image" src="https://github.com/user-attachments/assets/46d4f8de-4828-4c6a-9963-50c7153577d7" />
+<h4>Answer: admin:tomcat</h4>
+<h3>Once inside the admin panel, the attacker attempted to upload a file with the intent of establishing a reverse shell. Can you identify the name of this malicious file from the captured data?</h3>
+The filter http.filedata will filter packets related to files, the filtered network traffic shows 14.0.0.120 sending a packet to 10.0.0.112, opening the packet data shows a section named MIME Multipart Media Encapsulation, and inside it is a part of data called deployWar that contains the malicious file, being named JXQOZY.war.
+<br><br>
+<img width="1177" height="643" alt="image" src="https://github.com/user-attachments/assets/ce719c19-487a-432e-91e0-f2693f3a05dc" />
+<h4>Answer: JXQOZY.war</h4>

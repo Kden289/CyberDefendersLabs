@@ -33,3 +33,11 @@ Once the file has been obtained, the SHA-256 hash can be found by using the comm
 <br><br>
 <img width="652" height="81" alt="image" src="https://github.com/user-attachments/assets/8e4740fc-d89d-4c18-86af-b33ab53e37bc" />
 <h4>Answer: 847b4ad90b1daba2d9117a8e05776f3f902dda593fb1252289538acf476c4268 </h4>
+<h3>Q4.Which process was used to execute the malicious file?</h3>
+After entering the obtained SHA-256 hash into the search section of the VirusTotal homepage, a closer look is given into the properties of the login.php file, the Behaviours section is the most important section for finding what allowed the malicious file to be executed.
+<br><br>
+<img width="1717" height="402" alt="image" src="https://github.com/user-attachments/assets/a533748a-6ca3-4239-98bb-a3f60bb59a2e" />
+On Behaviours, scrolling down to the Process and service actions header reveals the processes that allowed the malicious allegato_708.js to run. There is one notable file process that suggests the root of the problem, the file paths "C:\Windows\system32\wscript.exe" "C:\Users\<USER>\Desktop\708.js" and C:\Windows\System32\wscript.exe C:\Windows\System32\WScript.exe "C:\Users\user\Desktop\708.js" reveals that as soon as the script was downloaded onto  10.2.14.101, the wscript.exe file was used to run the malicious script within the device and infect it.
+<br><br>
+<img width="1687" height="565" alt="image" src="https://github.com/user-attachments/assets/2ddfd2de-6d8a-4701-b248-90140a7d179a" />
+<h4>Answer: wscript.exe</h4>

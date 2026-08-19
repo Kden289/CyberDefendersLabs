@@ -23,6 +23,7 @@ Putting the IP address through to VirusTotal reveals it to be from China.
 Because the admin panel is a web server, filtering for packets that use HTTP packets will reveal that the port that provides access to the admin panel is 8080, 14.0.0.120 is seen requesting several files from the server aswell, with what seems to be lots of confidential information.
 <br><br>
 <img width="1172" height="356" alt="image" src="https://github.com/user-attachments/assets/0e7d0685-62b3-4fcf-8500-4ff1a598bd0b" />
+<h4>Answer:8080</h4>
 <h3>Q4.Following the discovery of open ports on our server, it appears that the attacker attempted to enumerate and uncover directories and files on our web server. Which tools can you identify from the analysis that assisted the attacker in this enumeration process?</h3>
 There were failed attempts from the attacker to take some files from the admin panel, the packets from the server that returned an error from the request can help in finding out the tool that 14.0.0.120 used. Using the filter http.request.uri and looking into the network traffic reveals Error 404 not found packets sent from the server.
 <br><br>

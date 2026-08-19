@@ -26,3 +26,4 @@ Reviewing the packet data shows that attached to the page was a JavaScript file 
 <img width="960" height="442" alt="image" src="https://github.com/user-attachments/assets/45aa22f9-10ab-40ab-b258-4fc6326fb4d6" />
 <h4>Answer: allegato_708.js</h4>
 <h3>Q3.What is the SHA-256 hash of the malicious file used for initial access?</h3>
+To further investigate the malicious nature of the file, the SHA-256 hash should be checked, to obtain the file in the first place, navigate to Wiresharks File→Export Objects→HTTP and export the login.php file.

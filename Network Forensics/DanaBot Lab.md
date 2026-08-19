@@ -1,4 +1,4 @@
-<img width="652" height="81" alt="image" src="https://github.com/user-attachments/assets/8cf7b14a-c693-4c01-a29a-a749d073c5dd" /><img width="652" height="81" alt="image" src="https://github.com/user-attachments/assets/f71c1f07-c023-4cad-b6b8-23681125afeb" /><h1>Tools</h1>
+<h1>Tools</h1>
 Wireshark
 <br>
 VirusTotal
@@ -41,3 +41,4 @@ On Behaviours, scrolling down to the Process and service actions header reveals 
 <br><br>
 <img width="1687" height="565" alt="image" src="https://github.com/user-attachments/assets/2ddfd2de-6d8a-4701-b248-90140a7d179a" />
 <h4>Answer: wscript.exe</h4>
+<h3>Q5.What is the file extension of the second malicious file utilized by the attacker?</h3>

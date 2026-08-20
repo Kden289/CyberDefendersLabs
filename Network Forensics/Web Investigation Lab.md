@@ -33,5 +33,5 @@ The value can be decoded by removing the %20, which are space, this produces the
 <h3>Q5.Can you provide the complete request URI that was used to read the web server's available databases?</h3>
 Upon research, databases contain key words such as "schema" or "information", so the filter that is best used to find these packets is http and contains "schema", this singles out lots of important packets that can be identified to find the correct complete request URI
 <img width="1172" height="427" alt="image" src="https://github.com/user-attachments/assets/61635e20-2749-437d-855d-0e791c00cd0c" />
-The packets that require attention are ones that have sqlmap as its useragent, as this was used to obtain the database, the 2nd packet 
+The packets that require attention are ones that have sqlmap as its useragent, as this was used to obtain the database, the 2nd packet is the most interesting as its request uri reads /search.php?search=book%27%20UNION%20ALL%20SELECT%20NULL%2CCONCAT%280x7178766271%2CJSON_ARRAYAGG%28CONCAT_WS%280x7a76676a636b%2Cschema_name%29%29%2C0x7176706a71%29%20FROM%20INFORMATION_SCHEMA.SCHEMATA--%20-
 

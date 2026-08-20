@@ -1,4 +1,4 @@
-<img width="1172" height="427" alt="image" src="https://github.com/user-attachments/assets/2d64d380-7efe-4568-9f61-778ceb036260" /><h1>Tools Used</h1>
+<h1>Tools Used</h1>
 Wireshark
 <h1>Scenario</h1>
 You are a cybersecurity analyst working in the Security Operations Center (SOC) of BookWorld, an expansive online bookstore renowned for its vast selection of literature. BookWorld prides itself on providing a seamless and secure shopping experience for book enthusiasts around the globe. Recently, you've been tasked with reinforcing the company's cybersecurity posture, monitoring network traffic, and ensuring that the digital environment remains safe from threats.
@@ -33,5 +33,21 @@ The value can be decoded by removing the %20, which are space, this produces the
 <h3>Q5.Can you provide the complete request URI that was used to read the web server's available databases?</h3>
 Upon research, databases contain key words such as "schema" or "information", so the filter that is best used to find these packets is http and contains "schema", this singles out lots of important packets that can be identified to find the correct complete request URI
 <img width="1172" height="427" alt="image" src="https://github.com/user-attachments/assets/61635e20-2749-437d-855d-0e791c00cd0c" />
-The packets that require attention are ones that have sqlmap as its useragent, as this was used to obtain the database, the 2nd packet is the most interesting as its request uri reads /search.php?search=book%27%20UNION%20ALL%20SELECT%20NULL%2CCONCAT%280x7178766271%2CJSON_ARRAYAGG%28CONCAT_WS%280x7a76676a636b%2Cschema_name%29%29%2C0x7176706a71%29%20FROM%20INFORMATION_SCHEMA.SCHEMATA--%20-
+<br><br>
+The packets that require attention are ones that have sqlmap as its useragent, as this was used to obtain the database, the 2nd packet is the most interesting as its request uri reads /search.php?search=book%27%20UNION%20ALL%20SELECT%20NULL%2CCONCAT%280x7178766271%2CJSON_ARRAYAGG%28CONCAT_WS%280x7a76676a636b%2Cschema_name%29%29%2C0x7176706a71%29%20FROM%20INFORMATION_SCHEMA.SCHEMATA--%20-, and when I decoded it using a url decoder, it returned /search.php?search=book' UNION ALL SELECT NULL,CONCAT(0x7178766271,JSON_ARRAYAGG(CONCAT_WS(0x7a76676a636b,schema_name)),0x7176706a71) FROM INFORMATION_SCHEMA.SCHEMATA-- -
+<br><br>
+The FROM shows that the attacker is trying to enumerate information of the database.
+<br><br>
+<img width="926" height="885" alt="image" src="https://github.com/user-attachments/assets/4a45ddfe-96e2-40e5-adb7-66cadc409252" />
+Answer: /search.php?search=book' UNION ALL SELECT NULL,CONCAT(0x7178766271,JSON_ARRAYAGG(CONCAT_WS(0x7a76676a636b,schema_name)),0x7176706a71) FROM INFORMATION_SCHEMA.SCHEMATA-- -
+<h3>Q6.Assessing the impact of the breach and data access is crucial, including the potential harm to the organization's reputation. What's the table name containing the website users data?</h3>
+The keyword UNION I found out is a very large indicator of a SQLi, because its difficult to filter SQLi attempts and the servers response to it, the filter http and contains "UNION" or ip.src== 73.124.22.98 to cover both the attacks SQLi attempts and the servers responses, then navigate to the attackers attempts to find out what the server responded with.
+<br><br>
+Having added user.agent as a column, reviewing the network traffic didn't take long to show the servers responses to the SQLi attempts and investigating the individual packets revealed users data to be labelled as "Customers".
+<img width="1182" height="543" alt="image" src="https://github.com/user-attachments/assets/71899c48-b6de-4b16-a210-c95d287fa017" />
+<h4>Answer: Customers</h4>
+<h3>Q7.The website directories hidden from the public could serve as an unauthorized access point or contain sensitive functionalities not intended for public access. Can you provide the name of the directory discovered by the attacker?</h3>
+I used the filter file.requests.uri to filter all url requests in the network traffic. After the attacker reads the companies database, they start to enumerate the servers files using the gobuster application, it go through several directories, with the server naturally returning 404 Not Found for hidden directories each time, but this is until they go through the /admin/ path, where the server returns an 302 FOUND then an OK to show that its let the attacker through, revealing the vulnerable directory.
+<img width="1177" height="422" alt="image" src="https://github.com/user-attachments/assets/f893aa25-e42e-49bc-8a8f-d9d15a4b5d60" />
+<h3>Q8.Knowing which credentials were used allows us to determine the extent of account compromise. What are the credentials used by the attacker for logging in?</h3>
 

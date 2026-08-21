@@ -1,2 +1,2 @@
 # CyberDefendersLabs
-Labs
+Walkthroughs of CyberDefenders labs I attempt
